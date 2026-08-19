@@ -1,0 +1,72 @@
+Express: FrameWork that is used on node for backend web devlopment
+
+
+project structure :
+Enviroment
+
+ npm init -y  : use for package json file make
+
+ {
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",    -> that is main file name
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}
+
+
+npm i express dotenv   ||  npm install express dotenv:
+both comamd for install express and dotenv-> Enviroment
+
+After install see the dependencies in the package.json
+
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {   -> here the dependencies it mens the module or dependencies require for for my project
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1"
+  }
+}
+
+npm install -D   nodemon -->  this is install for devlopment times
+
+
+///now package.json
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./src/app.mjs",   -> start server  comamd (npm run dev) or (npm start)
+    "start": "nodemon ./src/app.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
