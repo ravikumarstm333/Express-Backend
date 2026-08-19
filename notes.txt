@@ -70,3 +70,15 @@ npm install -D   nodemon -->  this is install for devlopment times
     "nodemon": "^3.1.14"
   }
 }
+
+
+
+
+Routing:
+    Create endPoint/api and Handling request
+    get request app.get('/',(req,res),{})
+    app.All('/*splat',(req,res)=>{})
+
+
+Static File Handling
+GET and POST
