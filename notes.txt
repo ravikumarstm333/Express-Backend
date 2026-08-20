@@ -4,7 +4,7 @@ Express: FrameWork that is used on node for backend web devlopment
 project structure :
 Enviroment
 
- npm init -y  : use for package json file make
+ npm init -y  : use for Create package.json file make
 
  {
   "name": "backend",
@@ -80,5 +80,26 @@ Routing:
     app.All('/*splat',(req,res)=>{})
 
 
+************************************************
 Static File Handling
+************************************************
+  .html
+  .css
+  .png/jpg
+  .js
+if work in ESM:
+  __dirname
+  __filename
+  the both are not working
+
+Express Provide To handel the Static File
+express Provide a middleware for static
+
+
+if your Public Folder Contains a file by the name index.html then 
+that file is automatic handel on root route by the static middleware
+
+
+********************************************
 GET and POST
+********************************************
