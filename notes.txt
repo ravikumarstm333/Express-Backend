@@ -103,3 +103,9 @@ that file is automatic handel on root route by the static middleware
 ********************************************
 GET and POST
 ********************************************
+
+
+
+25/08/2026
+Task1: SignUp page data trasfer to server using post request
+Task2: Data should be entered in file

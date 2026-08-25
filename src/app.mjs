@@ -10,16 +10,21 @@ console.log(__dirname)
 
 app.use(express.static('src/public'));   // middleware  app.use
 app.use(express.static('backend/frontend'))
-app.get('/',(req,res)=>{
-    res.send("Express Server Started... "); //-> this work like noaml method (write end )
-})
+
+// app.get('/',(req,res)=>{
+//     res.send("Express Server Started... "); //-> this work like noaml method (write end )
+// })
+ //// thsi work can do static
+
+
+// app.get('/home',(req,res)=>{
+//     res.sendFile(path.join(__dirname,'/public'))
+// })
+/// thsi is also can do static 
 
 
 
-app.get('/home',(req,res)=>{
-    res.sendFile(path.join(__dirname,'/public'))
-})
-
+// app.use()// somthing
 app.get('/login',(req,res)=>{
     res.sendFile(path.join(__dirname,'./public/login.html'))
 })
@@ -28,10 +33,12 @@ app.get('/signup',(req,res)=>{
     res.sendFile(path.join(__dirname,'./public/signup.html'))
 })
 
-app.get('/signupdata',(req,res)=>{
-    console,log(req.query);
-    userDetail.push(req.query)
-    res.redirect('/login')
+app.post('/signupdata',(req,res)=>{
+    //// now if data send using get then resive the in query form but if send data usin post then
+    // console,log(req.query);
+    // userDetail.push(req.query)
+    console.log(req.body);
+    res.redirect('/login');
 })
 app.get('/logindata',(req,res)=>{
     console.log(req.query.username);
