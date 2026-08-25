@@ -24,7 +24,8 @@ app.use(express.static('backend/frontend'))
 
 
 
-// app.use()// somthing
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json())
 app.get('/login',(req,res)=>{
     res.sendFile(path.join(__dirname,'./public/login.html'))
 })
@@ -38,7 +39,8 @@ app.post('/signupdata',(req,res)=>{
     // console,log(req.query);
     // userDetail.push(req.query)
     console.log(req.body);
-    res.redirect('/login');
+    // res.redirect('/login');  /// its only work url 
+    res.send({redirectedURL:'/login'})
 })
 app.get('/logindata',(req,res)=>{
     console.log(req.query.username);
