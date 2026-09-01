@@ -47,7 +47,6 @@ app.post('/signupdata',(req,res)=>{
             res.sendStatus(500)
         }else{
             let userCred =JSON.parse(data);
-            
             let haveUser=userCred.some((user)=>{
                 return user.username == req.body.username || user.email == req.body.email;
                 
@@ -74,8 +73,23 @@ app.post('/signupdata',(req,res)=>{
     // // res.redirect('/login');  /// its only work url 
     // res.send({redirectedURL:'/login'})
 })
-app.get('/logindata',(req,res)=>{
-    console.log(req.query.username);
+app.post('/logindata',(req,res)=>{
+    /// data CRUD
+    console.log(req.body)
+    fs.readFile(path.join(__dirname,'./userCred.json'),'utf-8',(err,data)=>{
+        if(err){
+            res.sendStatus(500);
+        }else{
+            let haveUser=(JSON.parse(data)).some(user=>{
+                return user.username==req.body.username && user.password== req.body.password;
+            })
+            if(haveUser){
+                res.send({redirectedURL:'/'})
+            }else{
+                res.send({error:"user does Not exist"})
+            }
+        }
+    })
 })
 
 app.get('/*splat',(req,res)=>{
