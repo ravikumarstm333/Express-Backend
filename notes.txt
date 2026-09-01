@@ -109,3 +109,13 @@ GET and POST
 25/08/2026
 Task1: SignUp page data trasfer to server using post request
 Task2: Data should be entered in file
+
+
+
+completed
+Basix server of EWxpress
+Route/endPoint Create | handle
+Data Sending Sever [GET | POST ]
+Static file handling 
+Err Setting
+###01-09-2026

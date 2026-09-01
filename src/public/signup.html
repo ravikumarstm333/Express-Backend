@@ -36,11 +36,17 @@
             })
             .then(res=>res.json())
             .then(data=>{
+                if(data.error){
+                    alert(data.error)
+                }
                 if(data.redirectedURL){
                     window.location.href=data.redirectedURL;
                 }
             })
-            .then(err=>console.log(err))
+            .catch(err=>{
+                alert(err)
+                console.log(err)
+            })
         })
     </script>
     

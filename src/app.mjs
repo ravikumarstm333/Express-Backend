@@ -2,6 +2,8 @@ import express from 'express'
 import dotenv from 'dotenv';
 import path from 'path'
 import { log } from 'console';
+import fs from 'fs';
+import { json } from 'stream/consumers';
 
 dotenv.config()
 const app=express();
@@ -38,9 +40,39 @@ app.post('/signupdata',(req,res)=>{
     //// now if data send using get then resive the in query form but if send data usin post then
     // console,log(req.query);
     // userDetail.push(req.query)
-    console.log(req.body);
-    // res.redirect('/login');  /// its only work url 
-    res.send({redirectedURL:'/login'})
+
+    //// data CRUD
+    fs.readFile(path.join(__dirname,'./userCred.json'),'utf-8',(err,data)=>{
+        if(err){
+            res.sendStatus(500)
+        }else{
+            let userCred =JSON.parse(data);
+            
+            let haveUser=userCred.some((user)=>{
+                return user.username == req.body.username || user.email == req.body.email;
+                
+            });
+            if(haveUser){
+                return res.status(409).send({error:'User Already Exists'})
+               
+            }else{
+                userCred.push(req.body);
+                fs.writeFile(path.join(__dirname,'./userCred.json'),JSON.stringify(userCred),(err)=>{
+                    if(err){
+                        res.sendStatus(500);
+                    }else{
+                        res.send({redirectedURL:'/'})
+                    }
+                })
+            }
+            
+        }
+    })
+
+
+    // console.log(req.body);
+    // // res.redirect('/login');  /// its only work url 
+    // res.send({redirectedURL:'/login'})
 })
 app.get('/logindata',(req,res)=>{
     console.log(req.query.username);
